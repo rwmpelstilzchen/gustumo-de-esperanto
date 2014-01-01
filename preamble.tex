@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[margin=2cm, a4paper]{geometry}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+\tolerance=99999
+\usepackage{setspace}
+%\setstretch{2}
+
+\usepackage{tabulary}
+\usepackage{tabu}
+\usepackage{paralist}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{url}
+
+\usepackage{tikz,pbox}
+\newcommand{\cxirkauxi}[1]{\resizebox{1em}{!}{\pbox{100cm}{\begin{tikzpicture}\node[circle, draw, inner sep=0.1cm, line width=2pt, color=gray] {\resizebox{1em}{!}{\textcolor{black}{#1}}};\end{tikzpicture}}}}
+\newcommand{\ducxirkauxi}[1]{\resizebox{2em}{!}{\pbox{100cm}{\begin{tikzpicture}\node[circle, draw, inner sep=0.1cm, line width=2pt, color=gray] {\resizebox{2em}{!}{\textcolor{black}{#1}}};\end{tikzpicture}}}}
+
+\usepackage[nooverlap,latin]{ruby}
+%\renewcommand{\rubysep}{0.0cm}
+\renewcommand{\rubysep}{-0.5ex}
+\renewcommand{\rubysize}{1}
+%\newcommand{\gloseto}[2]{\ruby{\EO{#1}}{\RL{#2}}}
+\newcommand{\gloseto}[2]{\setstretch{1}\begin{tabular}{c}\RL{#2}\\\EO{\textit{#1}}\end{tabular}\setstretch{2.5}}
+\newcommand{\gl}[2]{\gloseto{#1}{#2}\hspace{0.00cm}}
+
+\newcommand{\bisection}[2]{\section{#1\hfill\LR{#2}}}
+\newcommand{\bisubsection}[2]{\subsection*{#1\hfill\LR{#2}}}
+
+\newcommand{\versperanto}[2]{\item[\cxirkauxi{#1}]\begin{verse}\EO{#2}\end{verse}}
+\newcommand{\flushitem}{\item\flushleft}
+
+\usepackage{titlesec}
+\newcommand{\sectionfont}{\fontspec[Script=Hebrew]{Alef Bold}}
+\newcommand{\inkA}{\addfontfeature{Color=BF0000}} % light red
+\newcommand{\inkB}{\addfontfeature{Color=808080}} % light grey
+\definecolor{inkB}{HTML}{808080}
+\newcommand{\inkC}{\addfontfeature{Color=404040}} % dark grey
+\definecolor{inkC}{HTML}{404040}
+\newcommand{\symbolglyph}[1]{{\fontspec{Symbola}#1}}
+\newcommand{\sectionornament}{\hspace{0.5cm}{\symbolglyph{\inkA ⁘}}\hspace{0.5cm}}
+%\titleformat{\section}{\sectionfont\Large}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\titlerule}]
+\titleformat{\section}{\sectionfont\Large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
+\titleformat{\subsection}{\sectionfont\large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
+
+\usepackage{datetime}
+\newdateformat{csdate}{\LR{\THEYEAR\mbox{$$·$$}\THEMONTH\mbox{$$·$$}\THEDAY}}
+
+\usepackage{fontspec}
+\usepackage[RTLdocument]{bidi}
+
+\setmainfont[Script=Hebrew,
+	AutoFakeSlant=-0.15,
+	BoldFont={Rutz_OE Bold Pro}]
+	{Rutz_OE Regular Pro}
+\setmainfont[Script=Hebrew]{Alef}
+\setmainfont[Script=Hebrew]{SBL Hebrew}
+\setmonofont[Mapping=tex-text, Scale=0.9]{PragmataPro}
+\newcommand{\EO}[1]{\LR{\fontspec{Vesper Pro}#1}}
+\renewcommand{\L}[1]{\LR{\fontspec{Vesper Pro}#1}}
+\newcommand{\BH}[1]{\RL{\fontspec[Script=Hebrew]{SBL Hebrew}#1}}
+\newcommand{\hl}[1]{\underline{#1}}
