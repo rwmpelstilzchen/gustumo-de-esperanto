@@ -26,8 +26,10 @@
 \newcommand{\gloseto}[2]{\setstretch{1}\begin{tabular}{c}\RL{#2}\\\EO{\textit{#1}}\end{tabular}\setstretch{2.5}}
 \newcommand{\gl}[2]{\gloseto{#1}{#2}\hspace{0.00cm}}
 
-\newcommand{\bisection}[2]{\section{#1\hfill\LR{#2}}}
-\newcommand{\bisubsection}[2]{\subsection*{#1\hfill\LR{#2}}}
+\newcommand{\EOsection}[1]{\fontspec{Diavlo}\textbf{#1}}
+\newcommand{\bisection}[2]{\section{#1\hfill\LR{\EOsection{#2}}}}
+\newcommand{\bisubsection}[2]{\subsection*{#1\hfill\LR{\EOsection{#2}}}}
+\newcommand{\biling}[2]{\EO{#1} & \L{#2}\\}
 
 \newcommand{\versperanto}[2]{\item[\cxirkauxi{#1}]\begin{verse}\EO{#2}\end{verse}}
 \newcommand{\flushitem}{\item\flushleft}
@@ -56,9 +58,9 @@
 	BoldFont={Rutz_OE Bold Pro}]
 	{Rutz_OE Regular Pro}
 \setmainfont[Script=Hebrew]{Alef}
-\setmainfont[Script=Hebrew]{SBL Hebrew}
+\setmainfont[Script=Hebrew]{SBL BibLit}
 \setmonofont[Mapping=tex-text, Scale=0.9]{PragmataPro}
 \newcommand{\EO}[1]{\LR{\fontspec{Vesper Pro}#1}}
 \renewcommand{\L}[1]{\LR{\fontspec{Vesper Pro}#1}}
-\newcommand{\BH}[1]{\RL{\fontspec[Script=Hebrew]{SBL Hebrew}#1}}
+\newcommand{\BH}[1]{\RL{\fontspec[Script=Hebrew]{SBL BibLit}#1}}
 \newcommand{\hl}[1]{\underline{#1}}
