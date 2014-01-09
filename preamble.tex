@@ -1,17 +1,18 @@
 \documentclass{article}
-\usepackage[margin=2cm, a4paper]{geometry}
+\usepackage[margin=1cm, a5paper]{geometry}
 
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
-\tolerance=99999
+\tolerance=9999
 \usepackage{setspace}
 %\setstretch{2}
 
 \usepackage{tabulary}
 \usepackage{tabu}
 \usepackage{paralist}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{multicol}
+\setlength{\columnsep}{-1cm}
 \usepackage{url}
 
 \usepackage{tikz,pbox}
@@ -24,12 +25,16 @@
 \renewcommand{\rubysize}{1}
 %\newcommand{\gloseto}[2]{\ruby{\EO{#1}}{\RL{#2}}}
 \newcommand{\gloseto}[2]{\setstretch{1}\begin{tabular}{c}\RL{#2}\\\EO{\textit{#1}}\end{tabular}\setstretch{2.5}}
-\newcommand{\gl}[2]{\gloseto{#1}{#2}\hspace{0.00cm}}
+\newcommand{\gl}[2]{\gloseto{#1}{#2}}
 
 \newcommand{\EOsection}[1]{\fontspec{Diavlo}\textbf{#1}}
 \newcommand{\bisection}[2]{\section{#1\hfill\LR{\EOsection{#2}}}}
 \newcommand{\bisubsection}[2]{\subsection*{#1\hfill\LR{\EOsection{#2}}}}
 \newcommand{\biling}[2]{\EO{#1} & \L{#2}\\}
+
+\usepackage{environ}
+%\NewEnviron{gramatiko}{\begin{minipage}{\textwidth}\begin{RTL}\begin{compactitem}\BODY\end{compactitem}\end{RTL}\end{minipage}}
+\NewEnviron{gramatiko}{\begin{RTL}\begin{itemize*}\BODY\end{itemize*}\end{RTL}}
 
 \newcommand{\versperanto}[2]{\item[\cxirkauxi{#1}]\begin{verse}\EO{#2}\end{verse}}
 \newcommand{\flushitem}{\item\flushleft}
