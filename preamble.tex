@@ -34,7 +34,9 @@
 
 \usepackage{environ}
 %\NewEnviron{gramatiko}{\begin{minipage}{\textwidth}\begin{RTL}\begin{compactitem}\BODY\end{compactitem}\end{RTL}\end{minipage}}
-\NewEnviron{gramatiko}{\begin{RTL}\begin{itemize*}\BODY\end{itemize*}\end{RTL}}
+\NewEnviron{gramatiko}{\vspace{-0.0em}\setstretch{1}\begin{RTL}\flushright\BODY\end{RTL}\setstretch{2.5}}
+	\newcommand{\gramsep}{~* }
+	\newcommand{\gramitem}{{\fontspec{Symbola}❮~}}
 
 \newcommand{\versperanto}[2]{\item[\cxirkauxi{#1}]\begin{verse}\EO{#2}\end{verse}}
 \newcommand{\flushitem}{\item\flushleft}
