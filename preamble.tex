@@ -1,5 +1,5 @@
-\documentclass{article}
-\usepackage[margin=1cm, a5paper]{geometry}
+\documentclass{book}
+\usepackage[scale=0.8, a5paper]{geometry}
 
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
@@ -7,6 +7,7 @@
 \usepackage{setspace}
 %\setstretch{2}
 
+\usepackage{calc}
 \usepackage{tabulary}
 \usepackage{tabu}
 \usepackage{paralist}
@@ -28,8 +29,9 @@
 \newcommand{\gl}[2]{\gloseto{#1}{#2}}
 
 \newcommand{\EOsection}[1]{\fontspec{Diavlo}\textbf{#1}}
-\newcommand{\bisection}[2]{\section{#1\hfill\LR{\EOsection{#2}}}}
-\newcommand{\bisubsection}[2]{\subsection*{#1\hfill\LR{\EOsection{#2}}}}
+\newcommand{\bichapter}[2]{\chapter[#1]{#1\hfill\LR{#2}}}
+\newcommand{\bisection}[2]{\section[#1]{#1\hfill\LR{{#2}}}}
+\newcommand{\bisubsection}[2]{\subsection[#1]{#1\hfill\LR{{#2}}}}
 \newcommand{\biling}[2]{\EO{#1} & \L{#2}\\}
 
 \usepackage{environ}
@@ -49,25 +51,51 @@
 \newcommand{\inkC}{\addfontfeature{Color=404040}} % dark grey
 \definecolor{inkC}{HTML}{404040}
 \newcommand{\symbolglyph}[1]{{\fontspec{Symbola}#1}}
-\newcommand{\sectionornament}{\hspace{0.5cm}{\symbolglyph{\inkA ⁘}}\hspace{0.5cm}}
-%\titleformat{\section}{\sectionfont\Large}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\titlerule}]
-\titleformat{\section}{\sectionfont\Large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
-\titleformat{\subsection}{\sectionfont\large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
 
 \usepackage{datetime}
 \newdateformat{csdate}{\LR{\THEYEAR\mbox{$$·$$}\THEMONTH\mbox{$$·$$}\THEDAY}}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
 
 \usepackage{fontspec}
 \usepackage[RTLdocument]{bidi}
 
 \setmainfont[Script=Hebrew,
-	AutoFakeSlant=-0.15,
-	BoldFont={Rutz_OE Bold Pro}]
-	{Rutz_OE Regular Pro}
-\setmainfont[Script=Hebrew]{Alef}
-\setmainfont[Script=Hebrew]{SBL BibLit}
+	AutoFakeSlant=-0.15]
+	{Rutz_OE}
+%\setmainfont[Script=Hebrew]{Alef}
+%\setmainfont[Script=Hebrew]{SBL BibLit}
 \setmonofont[Mapping=tex-text, Scale=0.9]{PragmataPro}
 \newcommand{\EO}[1]{\LR{\fontspec{Vesper Pro}#1}}
 \renewcommand{\L}[1]{\LR{\fontspec{Vesper Pro}#1}}
 \newcommand{\BH}[1]{\RL{\fontspec[Script=Hebrew]{SBL BibLit}#1}}
 \newcommand{\hl}[1]{\underline{#1}}
+
+\newcommand{\apartigilo}{\vfill{\color{gray}\hrule}\vfill}
+
+\newcommand{\setEO}{\setLR\fontspec{Vesper Pro}}
+\newcommand{\setHE}{\setRL\normalfont}
+\newcommand{\dulingvaujo}[2] {%
+	\begin{minipage}[t]{0.48\linewidth}\setHE\begin{center}#1\end{center}\end{minipage}%
+	\hfill%
+	\begin{minipage}[t]{0.48\linewidth}\setEO\begin{center}#2\end{center}\end{minipage}%
+}
+
+\newcommand{\ĝ}{\accent"02C6 ĝ}
+\newcommand{\ŭ}{\accent"02D8 u}
+
+
+
+\newcommand{\sectionornament}{\hspace{0.5cm}{\symbolglyph{\inkA ⁘}}\hspace{0.5cm}}
+%\titleformat{\section}{\sectionfont\Large}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\titlerule}]
+\titleformat{\chapter}{\vspace{-1cm}\sectionfont\bfseries\huge\color{black}}{\textbf{\LR{\thechapter}}\sectionornament}{0.0cm}{}[\titleline{\color{black}\titlerule[1.5pt]}]
+\titleformat{\section}{\sectionfont\Large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
+\titleformat{\subsection}{\sectionfont\large\color{inkC}}{\textbf{\LR{\thesection}}\sectionornament}{0.0cm}{}[\titleline{\color{inkB}\titlerule}]
+
+\titlespacing*{\chapter}       {0pt}        {0pt}                        {20pt}
+%\titlespacing*{\section}       {0pt}        {2.25ex plus 0.5ex minus .2ex} {2.3ex plus .2ex}
+%\titlespacing*{\subsection}    {0pt}        {2.00ex plus 0.5ex minus .2ex} {1.5ex plus .2ex}
+%\titlespacing*{\subsubsection} {0pt}        {2.00ex plus 0.5ex minus .2ex} {1.5ex plus .2ex}
+%\titlespacing*{\paragraph}     {0pt}        {2.00ex plus 0.5ex minus .2ex} {1em}
+%\titlespacing*{\subparagraph}  {\parindent} {2.00ex plus 0.5ex minus .2ex} {1em}
